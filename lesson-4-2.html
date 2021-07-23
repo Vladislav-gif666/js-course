@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // В прошлом домашнем задании вы реализовали корзину на базе массивов. 
+        // Какими объектами можно заменить их элементы?
+        // Реализуйте такие объекты.
+        // Перенести функционал подсчета корзины на объектно-ориентированную базу.
+
+let basket = {
+        shirt: {
+            "brand": "BOSS",
+            "name": "Business Luka",
+            "color": "Green",
+            "price": 6000
+        },
+        Jeans: {
+            "brand": "Dr Denim",
+            "name": "Gus",
+            "color": "Black",
+            "price": 4500
+        },
+        Hoodie: {
+            "brand": "Bolongaro Trevor",
+            "name": "Sport Peace",
+            "color": "White",
+            "price": 6598
+        }
+}
+
+function sumAll(obj, key) {
+        let fieldIterator = JSON.stringify(obj).matchAll('(?<="' + key + '":)[0-9]*');
+        let it = fieldIterator.next(), result = 0;
+        while (!it.done) {
+            result += it.value[0] - 0;
+            it = fieldIterator.next();
+        }
+        return result;
+    }
+
+    console.log(sumAll(basket, "price"));
+    </script>
+</body>
+</html>
